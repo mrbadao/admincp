@@ -1,0 +1,101 @@
+td {
+    cursor: pointer;
+}
+
+.month-header td {
+    padding: 8px;
+}
+
+.calendar-content tr td {
+    width: 14.3%;
+}
+
+.calendar-content .month-row {
+    border-right: 1px solid #ddd;
+    height: 130px;
+}
+
+td.today {
+    background: #EAEAEA none repeat !important;
+}
+
+.month-row td {
+    border: 1px solid #ddd;
+    padding: 0 !important;
+    height: 130px;
+    overflow: hidden;
+}
+
+.month-row td.day-off {
+    background: #AAF;
+}
+
+.month-row td.day-free {
+    background: #FAA;
+}
+
+.month-row td span {
+    display: block;
+    width: 100%;
+}
+
+.day-number {
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+    padding: 8px;
+}
+
+.day-number.today {
+    font-weight: 900;
+}
+
+.day-number.out-month {
+    color: #9d9d9d;
+}
+
+.event-wrapper {
+    padding-top: 1px !important;
+}
+
+.month-row .day-event {
+    border: 1px solid;
+    color: #1d1d1d;
+    font-size: 12px;
+    padding: 2px 8px;
+    height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+span.day-event i.glyphicon {
+    padding-right: 3px;
+}
+
+.day-event.default {
+    border-color: #1587BD;
+    color: #1D1D1D;
+    background-color: #9FC6E7;
+}
+
+.day-event.special {
+    border-color: #7BD148;
+    background-image: url("https://calendar.google.com/googlecalendar/images/ro_15.png");
+    background-color: #7BD148;
+}
+
+.day-event.multi {
+    border-right: none;
+    border-left: none;
+    text-align: center;
+}
+
+.multi.start {
+    border-left: 1px solid;
+}
+
+.multi.end {
+    border-right: 1px solid;
+}

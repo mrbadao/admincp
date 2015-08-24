@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="calendar">
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
@@ -9,7 +9,9 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
-    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <![endif]-->
+    <script src="assets/js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
     <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,10 +25,11 @@
 
     <!-- Style -->
     <link href="assets/css/calendar/calendar.css" rel="stylesheet"/>
-
 </head>
 <body>
-
+<script src="assets/js/calendar/function.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+<script src="assets/js/calendar/app.js"></script>
 <!--Nav bar-->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -91,27 +94,35 @@
 <!--content-->
 
 <div class="col-sm-12">
-    <div class="calendar row">
-        <div class="col-sm-12" style="padding-bottom: 15px;">
-            <button class="btn btn-default" id="btn-today">Today</button>
+    <div class="calendar row" ng-controller="CalendarController as CalendarCtrl">
+        <div id="calendar-controll" class="col-sm-12" style="padding-bottom: 15px;">
+            <button class="btn btn-default" id="btn-today" ng-click="CalendarCtrl.toDay()">Today</button>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-menu-left"></span>
+                <button type="button" class="btn btn-default"
+                        ng-click="CalendarCtrl.nextMonth(CalendarCtrl.ViewDate.getMonth() -1,CalendarCtrl.currentDate.getFullYear())">
+                    <span class="glyphicon glyphicon-menu-left"></span>
                 </button>
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-menu-right"></span>
+                <button type="button" class="btn btn-default"
+                        ng-click="CalendarCtrl.nextMonth(CalendarCtrl.ViewDate.getMonth() + 1,CalendarCtrl.currentDate.getFullYear())">
+                    <span class="glyphicon glyphicon-menu-right"></span>
                 </button>
             </div>
+
+            <span class="currentDate">{{CalendarCtrl.ViewDate|date: "MMM, yyyy"}}</span>
 
             <div class="pull-right">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-default">Day</button>
                     <button type="button" class="btn btn-default">Week</button>
-                    <button type="button" class="btn btn-default">Month</button>
+                    <button ng-class="{active:CalendarCtrl.viewMode=='month'}" type="button" class="btn btn-default">
+                        Month
+                    </button>
                 </div>
                 <button class="btn btn-defaul"><span class="glyphicon glyphicon-print"></span>Print</button>
                 <button class="btn btn-defaul"><span class="glyphicon glyphicon-cog"></span>Setting</button>
             </div>
         </div>
-        <div class="calendar-wrapper col-sm-12">
+        <div class="calendar-wrapper col-sm-12" view="month">
             <table class="calendar-content table">
                 <tr class="month-header">
                     <td>Sunday</td>
@@ -123,82 +134,20 @@
                     <td>Saturday</td>
                 </tr>
 
-                <tr class="month-row">
-                    <td class="day-free"><span class="day-number out-month">26</span></td>
-                    <td><span class="day-number out-month">27</span></td>
-                    <td><span class="day-number out-month">28</span></td>
-                    <td><span class="day-number out-month">29</span></td>
-                    <td><span class="day-number out-month">30</span></td>
-                    <td><span class="day-number out-month">31</span></td>
-                    <td class="day-off">
-                        <span class="day-number">1</span>
+                <tr class="month-row" ng-repeat="weeks in CalendarCtrl.days">
+                    <td weekday="sun" ng-repeat="day in weeks"
+                        ng-class="{'day-free': day.getDay() == 0,'day-off':day.getDay() == 6,
+                                'today':(day.getMonth() == CalendarCtrl.currentDate.getMonth())
+                                &&(day.getFullYear() == CalendarCtrl.currentDate.getFullYear())
+                                &&(day.getDate() == CalendarCtrl.currentDate.getDate())}">
+                        <span class="day-number"
+                              ng-class="{'out-month': day.getMonth() != CalendarCtrl.ViewDate.getMonth(),
+                              'today':(day.getMonth() == CalendarCtrl.currentDate.getMonth())
+                              &&(day.getFullYear() == CalendarCtrl.currentDate.getFullYear())
+                              &&(day.getDate() == CalendarCtrl.currentDate.getDate())}">
+                            {{day.getDate()}}
+                        </span>
                     </td>
-                </tr>
-                <tr class="month-row">
-                    <td class="day-free"><span class="day-number">2</span></td>
-                    <td><span class="day-number">3</span></td>
-                    <td><span class="day-number">4</span></td>
-                    <td><span class="day-number">5</span></td>
-                    <td><span class="day-number">6</span></td>
-                    <td><span class="day-number">7</span></td>
-                    <td class="day-off"><span class="day-number">8</span></td>
-                </tr>
-                <tr class="month-row">
-                    <td class="day-free">
-                        <span class="day-number">9</span>
-
-                        <div class="event-wrapper"><span class="day-event special"><i class="glyphicon glyphicon-blackboard"></i>Special event</span></div>
-                        <div class="event-wrapper"><span class="day-event default">My event My event My event My event My event </span></div>
-                        <div class="event-wrapper"><span class="day-event default">My event</span></div>
-                        <div class="event-wrapper"><span class="day-event default">My event</span></div>
-
-                    </td>
-                    <td><span class="day-number">10</span></td>
-                    <td><span class="day-number">11</span></td>
-                    <td><span class="day-number">12</span></td>
-                    <td><span class="day-number">13</span></td>
-                    <td><span class="day-number">14</span></td>
-                    <td class="day-off"><span class="day-number">15</span></td>
-                </tr>
-                <tr class="month-row">
-                    <td class="day-free"><span class="day-number">16</span></td>
-                    <td><span class="day-number">17</span></td>
-                    <td><span class="day-number">18</span></td>
-                    <td><span class="day-number">19</span></td>
-                    <td><span class="day-number">20</span></td>
-                    <td class="today"><span class="day-number today">21</span></td>
-                    <td class="day-off"><span class="day-number">22</span></td>
-
-                </tr>
-                <tr class="month-row">
-                    <td class="day-free"><span class="day-number">23</span></td>
-                    <td><span class="day-number">24</span></td>
-                    <td><span class="day-number">25</span></td>
-                    <td><span class="day-number">26</span></td>
-                    <td>
-                        <span class="day-number">27</span>
-
-                        <div class="event-wrapper"><span class="day-event multi start default"></span></div>
-                    </td>
-                    <td>
-                        <span class="day-number">28</span>
-
-                        <div class="event-wrapper"><span class="day-event multi default">Special event</span></div>
-                    </td>
-                    <td class="day-off">
-                        <span class="day-number">29</span>
-
-                        <div class="event-wrapper"><span class="day-event multi end default"></span></div>
-                    </td>
-                </tr>
-                <tr class="month-row">
-                    <td class="day-free"><span class="day-number">30</span></td>
-                    <td><span class="day-number">31</span></td>
-                    <td><span class="day-number out-month">1</span></td>
-                    <td><span class="day-number out-month">2</span></td>
-                    <td><span class="day-number out-month">3</span></td>
-                    <td><span class="day-number out-month">4<span></td>
-                    <td class="day-off"><span class="day-number out-month">5</span></td>
                 </tr>
             </table>
         </div>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appCalendar">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+    <script src="assets/js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Common custom styles  -->
+
+
+    <!-- Style -->
+    <link href="assets/css/calendar/calendar.css" rel="stylesheet"/>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="assets/js/angular.min.js"></script>-->
+    <script src="assets/js/calendar/function.js"></script>
+    <script src="assets/js/calendar/main.js"></script>
+</head>
+<body>
+
+<!--Nav bar-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!--Nav bar-->
+
+<!--content-->
+
+<div class="col-sm-12">
+    <div class="calendar row">
+        <div class="col-sm-12" style="padding-bottom: 15px;">
+            <button class="btn btn-default" id="btn-today">Today</button>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-menu-left"></span>
+                </button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-menu-right"></span>
+                </button>
+            </div>
+
+            <div class="pull-right">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">Day</button>
+                    <button type="button" class="btn btn-default">Week</button>
+                    <button type="button" class="btn btn-default">Month</button>
+                </div>
+                <button class="btn btn-defaul"><span class="glyphicon glyphicon-print"></span>Print</button>
+                <button class="btn btn-defaul"><span class="glyphicon glyphicon-cog"></span>Setting</button>
+            </div>
+        </div>
+        <div class="calendar-wrapper col-sm-12" view="month">
+            <table class="calendar-content table">
+                <tr class="month-header">
+                    <td>Sunday</td>
+                    <td>Monday</td>
+                    <td>Tuesday</td>
+                    <td>Wednesday</td>
+                    <td>Thursday</td>
+                    <td>Friday</td>
+                    <td>Saturday</td>
+                </tr>
+
+                <tr class="month-row">
+                    <td weekday="sun" class="day-free"><span class="day-number out-month">26</span></td>
+                    <td weekday="mon"><span class="day-number out-month">27</span></td>
+                    <td weekday="tue"><span class="day-number out-month">28</span></td>
+                    <td weekday="wed"><span class="day-number out-month">29</span></td>
+                    <td weekday="thur"><span class="day-number out-month">30</span></td>
+                    <td weekday="fri"><span class="day-number out-month">31</span></td>
+                    <td weekday="sat" class="day-off">
+                        <span class="day-number">1</span>
+                    </td>
+                </tr>
+                <tr class="month-row">
+                    <td weekday="sun" class="day-free"><span class="day-number out-month">26</span></td>
+                    <td weekday="mon"><span class="day-number out-month">27</span></td>
+                    <td weekday="tue"><span class="day-number out-month">28</span></td>
+                    <td weekday="wed"><span class="day-number out-month">29</span></td>
+                    <td weekday="thur"><span class="day-number out-month">30</span></td>
+                    <td weekday="fri"><span class="day-number out-month">31</span></td>
+                    <td weekday="sat" class="day-off">
+                        <span class="day-number">1</span>
+                    </td>
+                </tr>
+                <tr class="month-row">
+                    <td weekday="sun" class="day-free"><span class="day-number out-month">26</span></td>
+                    <td weekday="mon"><span class="day-number out-month">27</span></td>
+                    <td weekday="tue"><span class="day-number out-month">28</span></td>
+                    <td weekday="wed"><span class="day-number out-month">29</span></td>
+                    <td weekday="thur"><span class="day-number out-month">30</span></td>
+                    <td weekday="fri"><span class="day-number out-month">31</span></td>
+                    <td weekday="sat" class="day-off">
+                        <span class="day-number">1</span>
+                    </td>
+                </tr>
+                <tr class="month-row">
+                    <td weekday="sun" class="day-free"><span class="day-number out-month">26</span></td>
+                    <td weekday="mon"><span class="day-number out-month">27</span></td>
+                    <td weekday="tue"><span class="day-number out-month">28</span></td>
+                    <td weekday="wed"><span class="day-number out-month">29</span></td>
+                    <td weekday="thur"><span class="day-number out-month">30</span></td>
+                    <td weekday="fri"><span class="day-number out-month">31</span></td>
+                    <td weekday="sat" class="day-off">
+                        <span class="day-number">1</span>
+                    </td>
+                </tr>
+                <tr class="month-row">
+                    <td weekday="sun" class="day-free"><span class="day-number out-month">26</span></td>
+                    <td weekday="mon"><span class="day-number out-month">27</span></td>
+                    <td weekday="tue"><span class="day-number out-month">28</span></td>
+                    <td weekday="wed"><span class="day-number out-month">29</span></td>
+                    <td weekday="thur"><span class="day-number out-month">30</span></td>
+                    <td weekday="fri"><span class="day-number out-month">31</span></td>
+                    <td weekday="sat" class="day-off">
+                        <span class="day-number">1</span>
+                    </td>
+                </tr>
+                <tr class="month-row">
+                    <td weekday="sun" class="day-free"><span class="day-number out-month">26</span></td>
+                    <td weekday="mon"><span class="day-number out-month">27</span></td>
+                    <td weekday="tue"><span class="day-number out-month">28</span></td>
+                    <td weekday="wed"><span class="day-number out-month">29</span></td>
+                    <td weekday="thur"><span class="day-number out-month">30</span></td>
+                    <td weekday="fri"><span class="day-number out-month">31</span></td>
+                    <td weekday="sat" class="day-off">
+                        <span class="day-number">1</span>
+                    </td>
+                </tr>
+                <!--<tr class="month-row">-->
+                    <!--<td class="day-free"><span class="day-number">2</span></td>-->
+                    <!--<td><span class="day-number">3</span></td>-->
+                    <!--<td><span class="day-number">4</span></td>-->
+                    <!--<td><span class="day-number">5</span></td>-->
+                    <!--<td><span class="day-number">6</span></td>-->
+                    <!--<td><span class="day-number">7</span></td>-->
+                    <!--<td class="day-off"><span class="day-number">8</span></td>-->
+                <!--</tr>-->
+                <!--<tr class="month-row">-->
+                    <!--<td class="day-free">-->
+                        <!--<span class="day-number">9</span>-->
+
+                        <!--<div class="event-wrapper"><span class="day-event special"><i-->
+                                <!--class="glyphicon glyphicon-blackboard"></i>Special event</span></div>-->
+                        <!--<div class="event-wrapper"><span class="day-event default">My event My event My event My event My event </span>-->
+                        <!--</div>-->
+                        <!--<div class="event-wrapper"><span class="day-event default">My event</span></div>-->
+                        <!--<div class="event-wrapper"><span class="day-event default">My event</span></div>-->
+
+                    <!--</td>-->
+                    <!--<td><span class="day-number">10</span></td>-->
+                    <!--<td><span class="day-number">11</span></td>-->
+                    <!--<td><span class="day-number">12</span></td>-->
+                    <!--<td><span class="day-number">13</span></td>-->
+                    <!--<td><span class="day-number">14</span></td>-->
+                    <!--<td class="day-off"><span class="day-number">15</span></td>-->
+                <!--</tr>-->
+                <!--<tr class="month-row">-->
+                    <!--<td class="day-free"><span class="day-number">16</span></td>-->
+                    <!--<td><span class="day-number">17</span></td>-->
+                    <!--<td><span class="day-number">18</span></td>-->
+                    <!--<td><span class="day-number">19</span></td>-->
+                    <!--<td><span class="day-number">20</span></td>-->
+                    <!--<td class="today"><span class="day-number today">21</span></td>-->
+                    <!--<td class="day-off"><span class="day-number">22</span></td>-->
+
+                <!--</tr>-->
+                <!--<tr class="month-row">-->
+                    <!--<td class="day-free"><span class="day-number">23</span></td>-->
+                    <!--<td><span class="day-number">24</span></td>-->
+                    <!--<td><span class="day-number">25</span></td>-->
+                    <!--<td><span class="day-number">26</span></td>-->
+                    <!--<td>-->
+                        <!--<span class="day-number">27</span>-->
+
+                        <!--<div class="event-wrapper"><span class="day-event multi start default"></span></div>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<span class="day-number">28</span>-->
+
+                        <!--<div class="event-wrapper"><span class="day-event multi default">Special event</span></div>-->
+                    <!--</td>-->
+                    <!--<td class="day-off">-->
+                        <!--<span class="day-number">29</span>-->
+
+                        <!--<div class="event-wrapper"><span class="day-event multi end default"></span></div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr class="month-row">-->
+                    <!--<td class="day-free"><span class="day-number">30</span></td>-->
+                    <!--<td><span class="day-number">31</span></td>-->
+                    <!--<td><span class="day-number out-month">1</span></td>-->
+                    <!--<td><span class="day-number out-month">2</span></td>-->
+                    <!--<td><span class="day-number out-month">3</span></td>-->
+                    <!--<td><span class="day-number out-month">4<span></td>-->
+                    <!--<td class="day-off"><span class="day-number out-month">5</span></td>-->
+                <!--</tr>-->
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--content-->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

@@ -1,3 +1,7 @@
+#calendar-controll button span.glyphicon{
+    padding-right: 5px;
+}
+
 td {
     cursor: pointer;
 }

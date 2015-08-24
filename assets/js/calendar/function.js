@@ -20,3 +20,13 @@ function getDaysInMonth(month, year) {
     }
     return mMonth;
 }
+
+function getEvent(events, date) {
+    var eventDate;
+    for (var i = 0; i < events.length; i++) {
+        eventDate = new Date(events[i].startdate);
+        if (eventDate.getDate() == date.getDate())
+            return events[i];
+    }
+    return '';
+}

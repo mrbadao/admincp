@@ -147,6 +147,7 @@
                               &&(day.getDate() == CalendarCtrl.currentDate.getDate())}">
                             {{day.getDate()}}
                         </span>
+                        <div ng-bind-html="CalendarCtrl.initEvents(day)"></div>
                     </td>
                 </tr>
             </table>

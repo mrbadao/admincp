@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/admincp.iml" filepath="$PROJECT_DIR$/.idea/admincp.iml" />
       <module fileurl="file://C:/wamp/www/admincp/.idea/amdmincp.iml" filepath="C:/wamp/www/admincp/.idea/amdmincp.iml" />
     </modules>
   </component>

@@ -15,8 +15,9 @@
             "name": "meeting"
         }
     ];
+    var Events = dumpEvent;
 
-    app.controller('CalendarController', function () {
+    app.controller('CalendarController', ['$sce', function ($sce) {
         var self = this;
 
         self.viewMode = 'month';
@@ -40,12 +41,15 @@
             self.ViewDate = new Date(self.currentDate);
         };
 
-        self.initEvents = function (date, element) {
-            console.log(element);
-            var html = '<div class="event-wrapper">' +
-                '<span class="day-event default">My event My event My event My event My event</span>' +
-                '</div>';
-            console.log(html);
+        self.initEvents = function (date) {
+            var htmlEvent = '';
+            var myEvent = getEvent(Events, date);
+            if (myEvent) {
+                htmlEvent = '<div class="event-wrapper">' +
+                    '<span class="day-event default">' + myEvent.name + '</span>' +
+                    '</div>';
+            }
+            return $sce.trustAsHtml(htmlEvent);
         }
-    });
+    }]);
 })();

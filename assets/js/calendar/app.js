@@ -6,18 +6,21 @@
 
 (function () {
     var app = angular.module("calendar", []);
+
     var dumpEvent = [
         {
-            "date":1440417136380,
-
+            "startdate": 1440417136380,
+            "enddate": 1440417136380,
+            "type": "default",
+            "name": "meeting"
         }
     ];
 
     app.controller('CalendarController', function () {
         var self = this;
+
         self.viewMode = 'month';
         self.currentDate = new Date();
-        console.log(self.currentDate.getTime());
         self.ViewDate = new Date(self.currentDate);
         self.days = getDaysInMonth(this.currentDate.getMonth(), this.currentDate.getFullYear());
 
@@ -36,5 +39,13 @@
             self.days = getDaysInMonth(this.currentDate.getMonth(), this.currentDate.getFullYear());
             self.ViewDate = new Date(self.currentDate);
         };
+
+        self.initEvents = function (date, element) {
+            console.log(element);
+            var html = '<div class="event-wrapper">' +
+                '<span class="day-event default">My event My event My event My event My event</span>' +
+                '</div>';
+            console.log(html);
+        }
     });
 })();

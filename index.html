@@ -135,7 +135,7 @@
                 </tr>
 
                 <tr class="month-row" ng-repeat="weeks in CalendarCtrl.days">
-                    <td weekday="sun" ng-repeat="day in weeks"
+                    <td weekday="sun" ng-repeat="day in weeks" ng-init="CalendarCtrl.initEvents(day, this)"
                         ng-class="{'day-free': day.getDay() == 0,'day-off':day.getDay() == 6,
                                 'today':(day.getMonth() == CalendarCtrl.currentDate.getMonth())
                                 &&(day.getFullYear() == CalendarCtrl.currentDate.getFullYear())

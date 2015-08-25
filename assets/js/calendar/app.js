@@ -45,11 +45,15 @@
             var htmlEvent = '';
             var myEvent = getEvent(Events, date);
             if (myEvent) {
-                htmlEvent = '<div class="event-wrapper">' +
-                    '<span class="day-event default">' + myEvent.name + '</span>' +
+                htmlEvent = '<div class="event-wrapper" >' +
+                    '<span class="day-event default" ng-click="self.toDay()">' + myEvent.name + '</span>' +
                     '</div>';
             }
             return $sce.trustAsHtml(htmlEvent);
         }
+
+
+            //alert('adasdasd');
+
     }]);
 })();

@@ -103,3 +103,22 @@ span.day-event i.glyphicon {
 .multi.end {
     border-right: 1px solid;
 }
+
+/*------------------------------------------*/
+.calendar-content .header{
+    border-top: 1px solid #ccc;
+}
+
+.calendar-content .header .col-header{
+    display: block;
+    float: left;
+    width: 13.5% ;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.calendar-content .header .col-header.gmt{
+    width: 5.5%;
+    text-align: left;
+}

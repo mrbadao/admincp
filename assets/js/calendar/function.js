@@ -5,11 +5,13 @@
 function getDaysInMonth(month, year) {
     var mMonth = [];
     var mWeek = [];
-    firstDay = new Date(year, month, 1);
-    lastDay = new Date(year, month + 1, 0);
+
+    var firstDay = new Date(year, month, 1);
     var starDay = new Date(year, month, 1 - firstDay.getDay());
+    
     var i = 0;
     while (i < 42) {
+        //mWeek.push({"date":new Date(starDay)});
         mWeek.push(new Date(starDay));
         starDay.setDate(starDay.getDate() + 1);
         i++;
@@ -18,6 +20,7 @@ function getDaysInMonth(month, year) {
             mWeek = [];
         }
     }
+
     return mMonth;
 }
 
